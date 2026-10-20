@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Checkout | Cartly</title></head>
+<body>
+  <main>
+    <h1>Checkout</h1>
+    <p><a href="{% url 'cart:detail' %}">Back to cart</a></p>
+    <h2>Order summary</h2>
+    <ul>
+      {% for item in cart_items %}
+        <li>{{ item.product.name }} × {{ item.quantity }} — {{ item.total_price }}</li>
+      {% endfor %}
+    </ul>
+    <p>Order total: {{ cart_total }}</p>
+    <p>Payment method: Cash on Delivery</p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Place order</button>
+    </form>
+  </main>
+</body>
+</html>

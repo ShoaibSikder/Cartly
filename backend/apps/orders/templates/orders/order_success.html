@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Order placed | Cartly</title></head>
+<body>
+  <main>
+    <h1>Thank you for your order</h1>
+    <p>Order #{{ order.pk }} has been placed.</p>
+    <p>Total due on delivery: {{ order.total_amount }}</p>
+    <p><a href="{% url 'orders:history' %}">View your orders</a></p>
+    <p><a href="{% url 'products:product_list' %}">Continue shopping</a></p>
+  </main>
+</body>
+</html>

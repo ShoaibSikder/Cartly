@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Order #{{ order.pk }} | Cartly</title></head>
+<body>
+  <main>
+    <h1>Order #{{ order.pk }}</h1>
+    <p><a href="{% url 'orders:history' %}">Back to order history</a></p>
+    <p>Placed {{ order.created_at|date:"SHORT_DATETIME_FORMAT" }}</p>
+    <p>Status: {{ order.get_status_display }}</p>
+    <h2>Delivery details</h2>
+    <address>
+      {{ order.full_name }}<br>
+      {{ order.address }}<br>
+      {{ order.city }} {{ order.postal_code }}<br>
+      {{ order.phone }}<br>
+      {{ order.email }}
+    </address>
+    <h2>Items</h2>
+    <ul>
+      {% for item in order.items.all %}
+        <li>{{ item.product_name }} × {{ item.quantity }} — {{ item.price_at_purchase }} each; {{ item.line_total }} total</li>
+      {% empty %}
+        <li>No items recorded.</li>
+      {% endfor %}
+    </ul>
+    <p>Payment: {{ order.get_payment_method_display }}</p>
+    <p>Total: {{ order.total_amount }}</p>
+  </main>
+</body>
+</html>

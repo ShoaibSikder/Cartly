@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Order history | Cartly</title></head>
+<body>
+  <main>
+    <h1>Order history</h1>
+    <p><a href="{% url 'products:product_list' %}">Continue shopping</a></p>
+    {% for order in orders %}
+      <article>
+        <h2><a href="{% url 'orders:detail' order.pk %}">Order #{{ order.pk }}</a></h2>
+        <p>Placed {{ order.created_at|date:"SHORT_DATETIME_FORMAT" }}</p>
+        <p>Status: {{ order.get_status_display }}</p>
+        <p>Total: {{ order.total_amount }}</p>
+        <ul>
+          {% for item in order.items.all %}
+            <li>{{ item.product_name }} × {{ item.quantity }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+    {% empty %}
+      <p>You have not placed any orders yet.</p>
+    {% endfor %}
+  </main>
+</body>
+</html>
