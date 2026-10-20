@@ -16,6 +16,9 @@ env/
 /backend/db.sqlite3
 /backend/db.sqlite3-journal
 /backend/media/
+/media/*
+!/media/products/
+!/media/products/*.svg
 /backend/staticfiles/
 
 # Frontend dependencies and build output

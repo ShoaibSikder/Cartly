@@ -2,3 +2,5 @@ Django>=5.2,<5.3
 psycopg[binary]>=3.2
 python-dotenv>=1.0
 Pillow>=10.0
+djangorestframework>=3.16,<4
+django-cors-headers>=4.7,<5

@@ -24,9 +24,34 @@ if not DEBUG and (not ALLOWED_HOSTS or "*" in ALLOWED_HOSTS):
 
 CSRF_TRUSTED_ORIGINS = [
     origin.strip()
-    for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
+    for origin in os.getenv(
+        "CSRF_TRUSTED_ORIGINS",
+        "http://localhost:3000,http://127.0.0.1:3000,"
+        "http://localhost:3002,http://127.0.0.1:3002,"
+        "http://localhost:5173,http://127.0.0.1:5173,"
+        "http://localhost:5500,http://127.0.0.1:5500,"
+        "http://localhost:5501,http://127.0.0.1:5501,"
+        "http://localhost:5502,http://127.0.0.1:5502",
+    ).split(",")
     if origin.strip()
 ]
+CORS_ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv(
+        "CORS_ALLOWED_ORIGINS",
+        "http://localhost:3000,http://127.0.0.1:3000,"
+        "http://localhost:3002,http://127.0.0.1:3002,"
+        "http://localhost:5173,http://127.0.0.1:5173,"
+        "http://localhost:5500,http://127.0.0.1:5500,"
+        "http://localhost:5501,http://127.0.0.1:5501,"
+        "http://localhost:5502,http://127.0.0.1:5502",
+    ).split(",")
+    if origin.strip()
+]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGIN_REGEXES = (
+    [r"^https?://(?:localhost|127\.0\.0\.1)(?::\d+)?$"] if DEBUG else []
+)
 
 
 def env_bool(name, default=False):
@@ -49,20 +74,27 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "corsheaders",
+    "apps.api.apps.ApiConfig",
     "apps.products.apps.ProductsConfig",
     "apps.accounts.apps.AccountsConfig",
     "apps.cart.apps.CartConfig",
     "apps.orders.apps.OrdersConfig",
+    "apps.wishlists.apps.WishlistsConfig",
+    "apps.reviews.apps.ReviewsConfig",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
+    "apps.api.middleware.LocalDevelopmentCsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "apps.api.middleware.StaticHtmlRevalidationMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -70,7 +102,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [PROJECT_ROOT / "Frontend" / "templates"],
+        "DIRS": [PROJECT_ROOT / "Frontend", PROJECT_ROOT / "Frontend" / "pages"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -79,6 +111,8 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "apps.cart.context_processors.cart_summary",
+                "apps.products.context_processors.store_navigation",
+                "apps.wishlists.context_processors.wishlist_summary",
             ],
         },
     },
@@ -112,7 +146,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [PROJECT_ROOT / "Frontend" / "static"]
+STATICFILES_DIRS = [PROJECT_ROOT / "Frontend"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
@@ -120,14 +154,24 @@ MEDIA_ROOT = PROJECT_ROOT / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
+}
+
 LOGIN_URL = "accounts:login"
 LOGIN_REDIRECT_URL = "products:product_list"
 LOGOUT_REDIRECT_URL = "products:product_list"
 
 SESSION_COOKIE_HTTPONLY = True
-CSRF_COOKIE_HTTPONLY = False  # Django templates need the CSRF token for forms.
+CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"
 CSRF_COOKIE_SAMESITE = "Lax"
+CSRF_FAILURE_VIEW = "apps.api.views.csrf_failure"
 
 if not DEBUG:
     SECURE_CONTENT_TYPE_NOSNIFF = True
