@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Create account | Cartly</title></head>
+<body>
+  <main>
+    <h1>Create your Cartly account</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Register</button>
+    </form>
+    <p><a href="{% url 'accounts:login' %}">Already have an account? Sign in</a></p>
+  </main>
+</body>
+</html>

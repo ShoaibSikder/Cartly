@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>My account | Cartly</title></head>
+<body>
+  <main>
+    <h1>My account</h1>
+    <p>Signed in as {{ request.user.username }} ({{ request.user.email }})</p>
+    <p><a href="{% url 'orders:history' %}">Order history</a></p>
+    <p><a href="{% url 'wishlists:detail' %}">My wishlist</a></p>
+    <form method="post" action="{% url 'accounts:logout' %}">
+      {% csrf_token %}
+      <button type="submit">Sign out</button>
+    </form>
+    <p><a href="{% url 'products:product_list' %}">Continue shopping</a></p>
+  </main>
+</body>
+</html>
