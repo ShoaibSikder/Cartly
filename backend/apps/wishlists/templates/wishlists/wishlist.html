@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>My wishlist | Cartly</title></head>
+<body>
+  <main>
+    <h1>My wishlist</h1>
+    <p><a href="{% url 'products:product_list' %}">Continue shopping</a></p>
+    {% for item in items %}
+      <article>
+        <h2><a href="{% url 'products:product_detail' item.product.slug %}">{{ item.product.name }}</a></h2>
+        <p>{{ item.product.price }}</p>
+        <form method="post" action="{% url 'wishlists:toggle' item.product_id %}">
+          {% csrf_token %}
+          <button type="submit">Remove</button>
+        </form>
+      </article>
+    {% empty %}
+      <p>Your wishlist is empty.</p>
+    {% endfor %}
+  </main>
+</body>
+</html>
