@@ -23,6 +23,7 @@ Cartly is a simple e-commerce store built for the CodeAlpha project using HTML, 
 - `Frontend/css/`: design tokens and reset (`base.css`), shared layout (`layout.css`), reusable components (`components.css`), page styling (`pages.css`), and breakpoints (`responsive.css`)
 - `Frontend/js/`: app startup and shared navigation (`main.js`, `components/shell.js`), API/session handling (`api/`), reusable UI (`components/`), and page-specific data and interactions (`pages/`)
 - `Frontend/assets/`: logos, illustrations, and other media
+- `media/`: product images and uploaded files; Django serves these from `/media/` during local development
 - `docs/`: project documentation and screenshots
 
 ## Windows setup

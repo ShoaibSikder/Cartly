@@ -146,6 +146,8 @@ Cartly/
     manage.py
     requirements.txt
     .env.example
+    media/
+      products/
 
   Frontend/
     assets/
@@ -168,7 +170,6 @@ Cartly/
 
   docs/
     project-documentation.md
-  media/
   README.md
 ```
 
@@ -346,5 +347,5 @@ The tests use the database configured in Django settings. Ensure your PostgreSQL
 - The supported payment method is Cash on Delivery. Online card processing is not included.
 - Customer reviews are visible publicly only after staff approval.
 - Apply checked-in database migrations with `migrate`. `makemigrations` is for creating migration files after model changes, not for initializing a database.
-- Product images and other uploaded files are stored under `media/` during local development. Configure suitable protected media storage and serving for production.
+- Product images and other uploaded files are stored under `backend/media/` during local development and served at `/media/`. Configure suitable protected media storage and serving for production.
 - Screenshots in the README are design/system references. Storefront products and customer data are managed through the database and backend.
