@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2457c5">
+  <title>Product | Cartly</title>
+  
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/components.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/pages.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/responsive.css?v=cartly-product-images-20261021-1">
+</head>
+<body data-page="product">
+  <main id="main-content" tabindex="-1">
+    <div class="container page">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a id="product-category-link" href="products.html">Products</a></li><li><span id="product-breadcrumb" aria-current="page">Product</span></li></ol></nav>
+      <div class="pdp">
+        <div class="pdp__media" id="product-image" aria-label="Product image"></div>
+        <section class="card pdp__panel" aria-labelledby="product-name">
+          <h1 id="product-name">Loading product…</h1>
+          <p class="pdp__rating"><a href="#reviews" aria-label="Customer reviews" id="product-rating"></a></p>
+          <p class="price price--lg" id="product-price"></p>
+          <p class="pdp__desc" id="product-description"></p>
+          <p class="pdp__stock" id="product-stock"></p>
+          <form id="add-cart-form">
+            <label class="pdp__qty-label" for="qty-input">Quantity</label>
+            <div class="qty" role="group" aria-label="Product quantity">
+              <button type="button" data-step="-1" aria-label="Decrease quantity" disabled>−</button>
+              <input id="qty-input" type="number" name="quantity" inputmode="numeric" min="1" value="1">
+              <button type="button" data-step="1" aria-label="Increase quantity">+</button>
+            </div>
+            <p class="field__hint" id="qty-note"></p>
+            <div class="pdp__buy">
+              <button class="btn btn--primary btn--lg" type="submit">Add to cart</button>
+              <button class="btn btn--secondary btn--lg" id="product-wishlist" type="button" data-wishlist="" aria-pressed="false">Save to wishlist</button>
+            </div>
+          </form>
+          <div class="pdp__buy" id="out-of-stock" hidden><button class="btn btn--primary btn--lg" type="button" disabled>Out of stock</button></div>
+          <ul class="subnav" aria-label="On this page"><li><a href="#details">Product details</a></li><li><a href="#shipping">Shipping</a></li><li><a href="#reviews">Reviews (<span id="product-review-count">0</span>)</a></li></ul>
+        </section>
+      </div>
+      <div class="info-blocks">
+        <section class="card card--pad-lg info-block" id="details" aria-labelledby="details-h"><h2 id="details-h">Product details</h2><p id="product-details"></p><p class="text-muted text-small product-category" id="product-category" hidden></p></section>
+        <section class="card card--pad-lg info-block" id="shipping" aria-labelledby="shipping-h"><h2 id="shipping-h">Shipping &amp; payment</h2><ul class="info-list"><li>Delivery is included in the price shown.</li><li>Pay with cash when your order arrives (cash on delivery).</li><li>Stock and price are checked again by the server when you place your order.</li></ul></section>
+      </div>
+      <section class="section" id="reviews" aria-labelledby="reviews-h">
+        <div class="page-head"><h2 id="reviews-h">Customer reviews</h2><p class="text-muted">Transparent ratings, with staff moderation before publication.</p></div>
+        <div class="reviews__grid">
+          <div class="card card--pad-lg rating-summary">
+            <h3 class="sr-only">Rating summary</h3><p class="rating-summary__score" id="review-average">–</p>
+            <span class="stars" id="review-stars" role="img" aria-label="No ratings yet">★★★★★</span>
+            <p class="text-muted" id="review-count-label">No reviews yet. Be the first to share your experience.</p>
+            <a class="btn btn--primary" id="write-review-link" href="reviews.html">Write a review</a>
+          </div>
+          <div id="product-review-list"></div>
+        </div>
+      </section>
+      <section class="section" id="related-section" aria-labelledby="rel-h" hidden><div class="section__head"><h2 id="rel-h">You might also like</h2></div><ul class="product-grid home-grid" id="related-products"></ul></section>
+    </div>
+  </main>
+  <script type="module" src="../js/main.js?v=cartly-product-images-20261021-1"></script>
+</body>
+</html>

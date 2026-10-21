@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2457c5">
+  <title>Your cart | Cartly</title>
+  
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/components.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/pages.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/responsive.css?v=cartly-product-images-20261021-1">
+</head>
+<body data-page="cart">
+  <main id="main-content" tabindex="-1">
+    <div class="container page">
+      <header class="page-head"><h1>Your cart</h1><p id="cart-description">Review items before you check out.</p></header>
+      <div class="cart-layout" id="cart-layout">
+        <ul class="card cart-items" id="cart-items" aria-label="Cart items"></ul>
+        <aside class="card summary summary--sticky" aria-labelledby="summary-title">
+          <h2 id="summary-title">Order summary</h2>
+          <dl class="summary-rows">
+            <div><dt id="cart-subtotal-label">Subtotal</dt><dd id="cart-subtotal">0.00</dd></div>
+            <div><dt>Delivery</dt><dd class="text-success">Included</dd></div>
+            <div class="total"><dt>Total</dt><dd id="cart-total">0.00</dd></div>
+          </dl>
+          <p class="alert alert--warning" id="cart-unavailable" role="alert" hidden><span class="alert__icon" aria-hidden="true"></span><span class="alert__body">Remove unavailable items to continue.</span></p>
+          <a class="btn btn--primary btn--lg btn--block" id="checkout-link" href="checkout.html">Continue to checkout</a>
+          <span class="btn btn--primary btn--lg btn--block" id="checkout-disabled" aria-disabled="true" hidden>Continue to checkout</span>
+          <p class="summary__note summary__note--muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span>Prices and stock are rechecked securely by the server at checkout.</span></p>
+          <p><a class="btn btn--text btn--block" href="products.html">← Continue shopping</a></p>
+        </aside>
+      </div>
+      <div class="empty-state" id="cart-empty" hidden><img src="../assets/empty-state.svg" alt="" width="128" height="96"><h2>Your cart is empty</h2><p>Add something you like and it will show up here.</p><a class="btn btn--primary" href="products.html">Browse products</a></div>
+    </div>
+  </main>
+  <script type="module" src="../js/main.js?v=cartly-product-images-20261021-1"></script>
+</body>
+</html>

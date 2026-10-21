@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#2457c5">
+  <title>Home | Cartly</title>
+  <meta name="description" content="Shop useful products for work, home, and everyday life at Cartly.">
+  
+  <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="./css/components.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="./css/pages.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="./css/responsive.css?v=cartly-product-images-20261021-1">
+</head>
+<body data-page="home">
+  <main id="main-content" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1 id="hero-title">Thoughtful finds. Everyday value.</h1>
+          <a class="btn btn--primary btn--lg" href="./pages/products.html">Explore products</a>
+        </div>
+        <aside class="featured" id="featured-product" aria-label="Featured product">
+          <a class="featured__media" id="featured-image" href="./pages/products.html" tabindex="-1" aria-hidden="true"></a>
+          <div class="featured__body">
+            <p class="eyebrow" id="featured-eyebrow">Featured</p>
+            <h2 id="featured-name">Featured product</h2>
+            <p class="price" id="featured-price"></p>
+            <p class="text-muted" id="featured-description">New products will appear here when they are added to the store.</p>
+            <a class="btn btn--primary" id="featured-link" href="./pages/products.html">Browse products</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <div class="container">
+      <section class="section" aria-labelledby="categories-heading">
+        <div class="section__head"><h2 id="categories-heading">Shop by category</h2></div>
+        <ul class="category-tiles" id="category-list">
+          <li class="text-muted">Browse all available products in the store.</li>
+        </ul>
+      </section>
+      <section class="section" aria-labelledby="popular-heading">
+        <div class="section__head"><h2 id="popular-heading">Popular right now</h2><a href="./pages/products.html">See all products →</a></div>
+        <ul class="product-grid home-grid" id="popular-products">
+          <li class="empty-state"><img src="./assets/empty-state.svg" alt="" width="128" height="96"><h3>Loading products</h3></li>
+        </ul>
+      </section>
+      <section class="section" aria-labelledby="new-products-heading">
+        <div class="section__head"><h2 id="new-products-heading">New in the store</h2><a href="./pages/products.html?sort=newest">See newest →</a></div>
+        <ul class="product-grid home-grid" id="new-products"></ul>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="./js/main.js?v=cartly-product-images-20261021-1"></script>
+</body>
+</html>

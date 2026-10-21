@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2457c5">
+  <title>Order details | Cartly</title>
+  
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/components.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/pages.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/responsive.css?v=cartly-product-images-20261021-1">
+</head>
+<body data-page="order">
+  <main id="main-content" tabindex="-1">
+    <div class="container page">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="orders.html">My orders</a></li><li><span aria-current="page">Order details</span></li></ol></nav>
+      <header class="page-head"><h1 id="order-title">Order details</h1><p id="order-date"></p></header>
+      <div class="order-detail-grid">
+        <section class="card card--pad-lg" aria-labelledby="items-title">
+          <h2 id="items-title">Items in this order</h2><ul class="summary-items" id="order-items"></ul>
+          <dl class="summary-rows"><div><dt>Payment method</dt><dd id="order-payment"></dd></div><div class="total"><dt>Total</dt><dd id="order-total"></dd></div></dl>
+        </section>
+        <aside class="card card--pad-lg" aria-labelledby="delivery-title">
+          <h2 id="delivery-title">Order details</h2>
+          <dl class="detail-list">
+            <div><dt>Status</dt><dd><span class="badge" id="order-status"></span></dd></div>
+            <div><dt>Recipient</dt><dd id="order-recipient"></dd></div>
+            <div><dt>Delivery address</dt><dd id="order-address"></dd></div>
+            <div><dt>Phone</dt><dd id="order-phone"></dd></div>
+            <div><dt>Email</dt><dd id="order-email"></dd></div>
+          </dl>
+        </aside>
+      </div>
+      <p class="order-detail__back"><a class="btn btn--secondary" href="orders.html">Back to my orders</a></p>
+    </div>
+  </main>
+  <script type="module" src="../js/main.js?v=cartly-product-images-20261021-1"></script>
+</body>
+</html>

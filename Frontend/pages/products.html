@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2457c5">
+  <title>Products | Cartly</title>
+  
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/components.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/pages.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/responsive.css?v=cartly-product-images-20261021-1">
+</head>
+<body data-page="products">
+  <main id="main-content" tabindex="-1">
+    <div class="container page">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><span aria-current="page">Products</span></li></ol></nav>
+      <header class="page-head"><h1 id="catalogue-title">All products</h1><p id="catalogue-description">Find the right product without the clutter.</p></header>
+      <div class="catalogue">
+        <button class="btn btn--secondary filters-toggle" id="filters-toggle" type="button" aria-expanded="false" aria-controls="filters">Filters</button>
+        <aside class="filters" id="filters" aria-label="Product filters">
+          <h2>Filters</h2>
+          <form id="filters-form" action="products.html" method="get">
+            <input type="hidden" name="q" id="filter-query">
+            <fieldset class="filter-group"><legend>Categories</legend><div id="category-filters"><p class="text-muted text-small">Loading categories…</p></div></fieldset>
+            <fieldset class="filter-group"><legend>Price range</legend><div class="price-range">
+              <div><label class="sr-only" for="min">Minimum price</label><input class="input" id="min" type="number" name="min" min="0" step="0.01" inputmode="decimal" placeholder="$0"></div>
+              <span class="price-range__sep" aria-hidden="true">–</span>
+              <div><label class="sr-only" for="max">Maximum price</label><input class="input" id="max" type="number" name="max" min="0" step="0.01" inputmode="decimal" placeholder="$200"></div>
+            </div></fieldset>
+            <fieldset class="filter-group"><legend>Availability</legend><label class="check"><input type="checkbox" name="stock" value="1"><span>In stock</span></label></fieldset>
+            <input type="hidden" name="sort" id="filter-sort" value="featured">
+            <div class="filters__actions"><button class="btn btn--primary" type="submit">Apply filters</button><a class="btn btn--secondary" href="products.html">Clear all</a></div>
+          </form>
+        </aside>
+        <section class="catalogue__main" aria-label="Product results">
+          <div class="catalogue-toolbar">
+            <p class="catalogue-toolbar__count" id="catalogue-count" role="status">Loading products…</p>
+            <form class="sort" id="sort-form" method="get" action="products.html">
+              <div id="sort-hidden-filters"></div>
+              <label for="sort">Sort by</label>
+              <select class="select" id="sort" name="sort">
+                <option value="featured">Featured</option><option value="newest">Newest</option>
+                <option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option>
+                <option value="rating">Top rated</option>
+              </select>
+              <button class="btn btn--secondary btn--sm" type="submit">Sort</button>
+            </form>
+          </div>
+          <ul class="product-grid" id="product-list"></ul>
+          <nav class="pagination" id="product-pagination" aria-label="Pagination" hidden><ul></ul></nav>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="../js/main.js?v=cartly-product-images-20261021-1"></script>
+</body>
+</html>

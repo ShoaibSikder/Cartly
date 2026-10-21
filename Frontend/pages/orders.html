@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2457c5">
+  <title>My orders | Cartly</title>
+  
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/components.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/pages.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/responsive.css?v=cartly-product-images-20261021-1">
+</head>
+<body data-page="orders">
+  <main id="main-content" tabindex="-1">
+    <div class="container page">
+      <header class="page-head"><h1>My orders</h1><p>Every order you have placed with Cartly.</p></header>
+      <table class="orders-table" id="orders-table">
+        <thead><tr><th scope="col">Order</th><th scope="col">Date</th><th scope="col">Items</th><th scope="col">Status</th><th scope="col">Total</th><th scope="col"><span class="sr-only">Action</span></th></tr></thead>
+        <tbody id="orders-list"></tbody>
+      </table>
+      <div class="empty-state" id="orders-empty" hidden><img src="../assets/empty-state.svg" alt="" width="128" height="96"><h2>You have not placed any orders yet</h2><p>Your orders will appear here after you check out.</p><a class="btn btn--primary" href="products.html">Browse products</a></div>
+    </div>
+  </main>
+  <script type="module" src="../js/main.js?v=cartly-product-images-20261021-1"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2457c5">
+  <title>Checkout | Cartly</title>
+  
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/components.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/pages.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/responsive.css?v=cartly-product-images-20261021-1">
+</head>
+<body data-page="checkout">
+  <main id="main-content" tabindex="-1">
+    <div class="container page">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="cart.html">Cart</a></li><li><span aria-current="page">Checkout</span></li></ol></nav>
+      <header class="page-head"><h1>Checkout</h1><p>Your details are protected. Review before placing your order.</p></header>
+      <div class="checkout-layout">
+        <form class="card card--pad-lg checkout-form" id="checkout-form">
+          <h2>Shipping details</h2><p class="text-small text-muted">Fields marked <span class="req text-danger" aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+          <div class="form-row">
+            <div class="field"><label class="field__label" for="full_name">Full name <span class="req" aria-hidden="true">*</span></label><input class="input" id="full_name" name="full_name" autocomplete="name" required></div>
+            <div class="field"><label class="field__label" for="email">Email address <span class="req" aria-hidden="true">*</span></label><input class="input" id="email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="field"><label class="field__label" for="phone">Phone number <span class="req" aria-hidden="true">*</span></label><input class="input" id="phone" name="phone" type="tel" autocomplete="tel" required><p class="field__hint">We only use this to coordinate delivery.</p></div>
+          <div class="field"><label class="field__label" for="address">Delivery address <span class="req" aria-hidden="true">*</span></label><textarea class="input" id="address" name="address" autocomplete="street-address" rows="3" required></textarea></div>
+          <div class="form-row">
+            <div class="field"><label class="field__label" for="city">City <span class="req" aria-hidden="true">*</span></label><input class="input" id="city" name="city" autocomplete="address-level2" required></div>
+            <div class="field"><label class="field__label" for="postal_code">Postal code <span class="opt">(optional)</span></label><input class="input" id="postal_code" name="postal_code" autocomplete="postal-code"></div>
+          </div>
+          <fieldset class="field"><legend class="field__label">Payment method</legend><div class="pay-option"><input type="radio" id="pay-cod" name="payment" value="cod" checked disabled><label for="pay-cod">Cash on delivery<small>Pay when your order arrives. This is currently the only payment method.</small></label></div></fieldset>
+          <p class="alert alert--warning" id="checkout-unavailable" role="alert" hidden>Update your cart before placing the order.</p>
+          <button class="btn btn--primary btn--lg btn--block" id="place-order" type="submit">Place order</button>
+          <p class="summary__note summary__note--muted">Your order is created only after server-side validation succeeds.</p>
+        </form>
+        <aside class="card summary summary--sticky" aria-labelledby="os-title">
+          <h2 id="os-title">Order summary</h2>
+          <ul class="summary-items" id="checkout-summary-items"></ul>
+          <dl class="summary-rows"><div><dt>Subtotal</dt><dd id="checkout-subtotal">0.00</dd></div><div><dt>Delivery</dt><dd class="text-success">Included</dd></div><div class="total"><dt>Total</dt><dd id="checkout-total">0.00</dd></div></dl>
+          <p><a class="btn btn--text btn--block" href="cart.html">← Edit cart</a></p>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="../js/main.js?v=cartly-product-images-20261021-1"></script>
+</body>
+</html>

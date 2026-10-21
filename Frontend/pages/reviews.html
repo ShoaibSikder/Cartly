@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2457c5">
+  <title>Customer reviews | Cartly</title>
+  
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/components.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/pages.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/responsive.css?v=cartly-product-images-20261021-1">
+</head>
+<body data-page="reviews">
+  <main id="main-content" tabindex="-1">
+    <div class="container page">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a id="reviews-product-link" href="products.html">Product</a></li><li><span aria-current="page">Reviews</span></li></ol></nav>
+      <header class="page-head"><h1>Customer reviews</h1><p id="reviews-product-description">Reviews appear publicly after staff approval.</p></header>
+      <div class="reviews__grid">
+        <section class="card card--pad-lg rating-summary" aria-labelledby="rating-summary-title">
+          <h2 class="sr-only" id="rating-summary-title">Rating summary</h2>
+          <p class="rating-summary__score" id="reviews-average">–</p>
+          <span class="stars" id="reviews-stars" role="img" aria-label="No ratings yet">★★★★★</span>
+          <p class="text-muted" id="reviews-count">No approved reviews yet.</p>
+        </section>
+        <section class="card card--pad-lg review-form" id="review-form" aria-labelledby="review-form-title">
+          <div id="review-authorized">
+            <div class="alert alert--info" id="pending-review-message" role="status" hidden><span class="alert__icon" aria-hidden="true"></span><div class="alert__body">Your review is awaiting administrator approval. Updates are reviewed again before publication.</div></div>
+            <h2 id="review-form-title">Write a review</h2>
+            <form id="review-submit">
+              <fieldset class="field"><legend class="field__label">Your rating <span class="req" aria-hidden="true">*</span></legend><div class="star-input" role="radiogroup" aria-label="Rating from 1 to 5 stars">
+                <input type="radio" id="rating-5" name="rating" value="5"><label for="rating-5"><span aria-hidden="true">★</span><span class="sr-only">5 stars</span></label>
+                <input type="radio" id="rating-4" name="rating" value="4"><label for="rating-4"><span aria-hidden="true">★</span><span class="sr-only">4 stars</span></label>
+                <input type="radio" id="rating-3" name="rating" value="3"><label for="rating-3"><span aria-hidden="true">★</span><span class="sr-only">3 stars</span></label>
+                <input type="radio" id="rating-2" name="rating" value="2"><label for="rating-2"><span aria-hidden="true">★</span><span class="sr-only">2 stars</span></label>
+                <input type="radio" id="rating-1" name="rating" value="1"><label for="rating-1"><span aria-hidden="true">★</span><span class="sr-only">1 star</span></label>
+              </div></fieldset>
+              <div class="field"><label class="field__label" for="review-title">Review title <span class="opt">(optional)</span></label><input class="input" id="review-title" name="title" maxlength="80"></div>
+              <div class="field"><label class="field__label" for="review-body">Your review <span class="req" aria-hidden="true">*</span></label><textarea class="textarea" id="review-body" name="body" rows="5" minlength="10" maxlength="1000" required></textarea><p class="field__hint">Please write between 10 and 1,000 characters.</p></div>
+              <button class="btn btn--primary" type="submit">Submit for approval</button><p class="field__hint review-form__note">Your review appears publicly after staff approval.</p>
+            </form>
+          </div>
+          <div id="review-unauthorized" hidden><h2>Write a review</h2><p class="text-muted">Sign in to share your experience with this product.</p><a class="btn btn--primary" id="review-signin" href="../index.html?account=login">Sign in to review</a></div>
+        </section>
+      </div>
+      <ul class="review-list" id="review-list" aria-label="Customer reviews"></ul>
+      <p class="text-muted" id="reviews-empty">No approved reviews yet.</p>
+    </div>
+  </main>
+  <script type="module" src="../js/main.js?v=cartly-product-images-20261021-1"></script>
+</body>
+</html>

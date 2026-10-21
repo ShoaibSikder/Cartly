@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2457c5">
+  <title>My profile | Cartly</title>
+  
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/components.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/pages.css?v=cartly-product-images-20261021-1">
+  <link rel="stylesheet" href="../css/responsive.css?v=cartly-product-images-20261021-1">
+</head>
+<body data-page="profile">
+  <main id="main-content" tabindex="-1">
+    <div class="container page">
+      <header class="page-head"><h1>My profile</h1><p>Manage your account and jump to your orders and wishlist.</p></header>
+      <div class="profile-grid">
+        <section class="card card--pad-lg" aria-labelledby="acct-title">
+          <div class="profile-card__avatar" id="profile-avatar" aria-hidden="true">?</div>
+          <h2 id="acct-title">Account details</h2>
+          <form id="profile-form">
+            <div class="field"><label class="field__label" for="first_name">First name</label><input class="input" id="first_name" name="first_name" autocomplete="given-name"></div>
+            <div class="field"><label class="field__label" for="last_name">Last name</label><input class="input" id="last_name" name="last_name" autocomplete="family-name"></div>
+            <div class="field"><label class="field__label" for="email">Email address</label><input class="input" id="email" name="email" type="email" autocomplete="email"></div>
+            <div class="form-actions"><button class="btn btn--primary" type="submit">Save changes</button></div>
+          </form>
+          <form class="profile-logout"><button class="btn btn--danger" type="submit">Sign out</button></form>
+        </section>
+        <section aria-labelledby="quick-title"><h2 id="quick-title" class="sr-only">Shortcuts</h2><ul class="profile-links">
+          <li><a href="orders.html">My orders (<span id="profile-order-count">0</span>)</a></li>
+          <li><a href="wishlist.html">My wishlist (<span id="profile-wishlist-count">0</span>)</a></li>
+          <li><a href="cart.html">Your cart (<span id="profile-cart-count">0</span>)</a></li>
+          <li><a href="products.html">Browse products</a></li>
+        </ul></section>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="../js/main.js?v=cartly-product-images-20261021-1"></script>
+</body>
+</html>
