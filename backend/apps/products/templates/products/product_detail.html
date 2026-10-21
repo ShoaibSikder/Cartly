@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>{{ product.name }} | Cartly</title></head>
+<body>
+  <header>
+    <h1><a href="{% url 'home' %}">Cartly</a></h1>
+    <nav>
+      <a href="{% url 'products:product_list' %}">Products</a>
+      <a href="{% url 'cart:detail' %}">Cart</a>
+      {% if user.is_authenticated %}<a href="{% url 'wishlists:detail' %}">Wishlist</a>{% endif %}
+    </nav>
+  </header>
+  <main>
+    <p><a href="{% url 'products:product_list' %}">Back to products</a></p>
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description|linebreaksbr }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>Stock: {{ product.stock }}</p>
+    {% if review_summary.count %}
+      <p>Rating: {{ review_summary.average|floatformat:1 }} / 5 ({{ review_summary.count }} reviews)</p>
+    {% else %}
+      <p>No ratings yet.</p>
+    {% endif %}
+    <p><a href="{% url 'reviews:product_reviews' product.slug %}">Read reviews or write one</a></p>
+    {% if user.is_authenticated %}
+      <form method="post" action="{% url 'wishlists:toggle' product.pk %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <button type="submit">{% if in_wishlist %}Remove from wishlist{% else %}Add to wishlist{% endif %}</button>
+      </form>
+    {% endif %}
+    {% if product.stock %}
+      <form method="post" action="{% url 'cart:add' product.pk %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <label>Quantity <input type="number" name="quantity" value="1" min="1" max="{{ product.stock }}"></label>
+        <button type="submit">Add to cart</button>
+      </form>
+    {% else %}
+      <p>Out of stock.</p>
+    {% endif %}
+  </main>
+</body>
+</html>

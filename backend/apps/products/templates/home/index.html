@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Cartly</title></head>
+<body>
+  <header>
+    <h1>Cartly</h1>
+    <nav>
+      <a href="{% url 'products:product_list' %}">Shop products</a>
+      <a href="{% url 'cart:detail' %}">Cart</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'wishlists:detail' %}">Wishlist</a>
+        <a href="{% url 'accounts:profile' %}">My account</a>
+      {% else %}
+        <a href="{% url 'accounts:login' %}">Sign in</a>
+        <a href="{% url 'accounts:register' %}">Create account</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>
+    <h2>Featured products</h2>
+    {% for product in products %}
+      <article>
+        <h3><a href="{% url 'products:product_detail' product.slug %}">{{ product.name }}</a></h3>
+        <p>{{ product.price }}</p>
+      </article>
+    {% empty %}
+      <p>Products will appear here when the store administrator adds them.</p>
+    {% endfor %}
+    <p><a href="{% url 'products:product_list' %}">View all products</a></p>
+  </main>
+</body>
+</html>

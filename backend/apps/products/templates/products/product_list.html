@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Products | Cartly</title></head>
+<body>
+  <header>
+    <h1><a href="{% url 'home' %}">Cartly</a></h1>
+    <nav>
+      <a href="{% url 'products:product_list' %}">Products</a>
+      <a href="{% url 'cart:detail' %}">Cart</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'wishlists:detail' %}">Wishlist</a>
+        <a href="{% url 'accounts:profile' %}">My account</a>
+      {% else %}
+        <a href="{% url 'accounts:login' %}">Sign in</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>
+    <h2>Shop products</h2>
+    <form method="get">
+      <label>Search <input name="q" value="{{ query }}"></label>
+      <label>Category
+        <select name="category">
+          <option value="">All categories</option>
+          {% for category in categories %}
+            <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <button type="submit">Search</button>
+    </form>
+    {% for product in products %}
+      <article>
+        <h3><a href="{% url 'products:product_detail' product.slug %}">{{ product.name }}</a></h3>
+        <p>{{ product.price }} · {{ product.stock }} in stock</p>
+      </article>
+    {% empty %}
+      <p>No products found.</p>
+    {% endfor %}
+  </main>
+</body>
+</html>
