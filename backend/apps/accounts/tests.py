@@ -1,9 +1,25 @@
+from urllib.parse import parse_qs, urlsplit
+
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
 
 class AccountTests(TestCase):
+    def test_account_routes_open_header_overlay_and_preserve_next_url(self):
+        next_url = "/static/pages/cart.html"
+        for route, mode in (("accounts:login", "login"), ("accounts:register", "register")):
+            with self.subTest(mode=mode):
+                response = self.client.get(reverse(route), {"next": next_url})
+                location = urlsplit(response["Location"])
+
+                self.assertEqual(response.status_code, 302)
+                self.assertEqual(location.path, "/static/index.html")
+                self.assertEqual(
+                    parse_qs(location.query),
+                    {"next": [next_url], "account": [mode]},
+                )
+
     def test_registration_creates_user_and_logs_in(self):
         response = self.client.post(reverse("api:register"), {
             "username": "cartlyuser",

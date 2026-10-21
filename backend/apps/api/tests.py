@@ -97,8 +97,6 @@ class CartlyApiTests(TestCase):
             "index.html": ("id=\"hero-title\"", "id=\"popular-products\""),
             "pages/products.html": ("id=\"filters-form\"", "id=\"product-list\""),
             "pages/product_detail.html": ("id=\"add-cart-form\"", "id=\"related-products\""),
-            "pages/login.html": ("id=\"login-form\"", "id=\"register-link\""),
-            "pages/register.html": ("id=\"register-form\"", "id=\"login-link\""),
             "pages/profile.html": ("id=\"profile-form\"", "id=\"profile-order-count\""),
             "pages/cart.html": ("id=\"cart-items\"", "id=\"cart-empty\""),
             "pages/checkout.html": ("id=\"checkout-form\"", "id=\"checkout-summary-items\""),
