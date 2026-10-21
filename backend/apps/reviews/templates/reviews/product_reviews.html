@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>{{ product.name }} reviews | Cartly</title></head>
+<body>
+  <main>
+    <h1>Reviews for {{ product.name }}</h1>
+    <p><a href="{% url 'products:product_detail' product.slug %}">Back to product</a></p>
+    {% if average_rating %}<p>Average rating: {{ average_rating|floatformat:1 }} / 5</p>{% endif %}
+    {% for review in reviews %}
+      <article>
+        <h2>{{ review.title }}</h2>
+        <p>{{ review.rating }} / 5 — {{ review.user.username }}</p>
+        <p>{{ review.body|linebreaksbr }}</p>
+      </article>
+    {% empty %}
+      <p>No approved reviews yet.</p>
+    {% endfor %}
+    {% if own_review and not own_review.is_approved %}
+      <p>Your review is awaiting administrator approval.</p>
+    {% endif %}
+    <h2>{% if own_review %}Update your review{% else %}Write a review{% endif %}</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit review for approval</button>
+    </form>
+  </main>
+</body>
+</html>
