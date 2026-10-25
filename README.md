@@ -1,20 +1,25 @@
-# Cartly
+<h1 align="center">Cartly</h1>
 
-![Frontend](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-blue)
-![Backend](https://img.shields.io/badge/Backend-Django-0C4B33)
-![API](https://img.shields.io/badge/API-Django%20REST%20Framework-red)
-![Database](https://img.shields.io/badge/Database-PostgreSQL-336791)
+<p align="center"><strong>A simple storefront for browsing, buying, and managing products.</strong><br />A full-stack shop with customer accounts, inventory-aware checkout, and order management.</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-blue" alt="HTML, CSS, and JavaScript frontend" />
+  <img src="https://img.shields.io/badge/Backend-Django-0C4B33?logo=django&logoColor=white" alt="Django" />
+  <img src="https://img.shields.io/badge/API-Django%20REST%20Framework-red" alt="Django REST Framework" />
+  <img src="https://img.shields.io/badge/Database-PostgreSQL-336791?logo=postgresql&logoColor=white" alt="PostgreSQL" />
+</p>
 
 Cartly is a full-stack e-commerce storefront for browsing products, managing a shopping cart, and placing Cash on Delivery orders. The frontend uses responsive HTML, CSS, and JavaScript; Django and Django REST Framework provide the application logic and JSON API, with PostgreSQL for persistent data.
 
 Customers can register, browse and filter the catalog, save products to a wishlist, submit product reviews, and view their orders. Store staff manage products, inventory, orders, and review moderation through Django Admin.
 
-## Table Of Contents
+## Contents
 
 - [Screenshots](#screenshots)
 - [Core Features](#core-features)
 - [Customer And Staff Access](#customer-and-staff-access)
 - [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
 - [Project Structure](#project-structure)
 - [Backend Apps](#backend-apps)
 - [Frontend Architecture](#frontend-architecture)
@@ -22,6 +27,7 @@ Customers can register, browse and filter the catalog, save products to a wishli
 - [Environment Variables](#environment-variables)
 - [Installation And Setup](#installation-and-setup)
 - [Testing And Verification](#testing-and-verification)
+- [Deployment](#deployment)
 - [Development Notes](#development-notes)
 
 ## Screenshots
@@ -124,6 +130,24 @@ Staff use Django Admin at `/admin/` to maintain the catalog and manage store ope
 - `django-cors-headers`
 - `python-dotenv`
 - Pillow for image uploads
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Browser[Customer browser]
+    Web[Static HTML, CSS, and JavaScript]
+    Django[Django site and REST API]
+    DB[(PostgreSQL)]
+    Media[Product media storage]
+
+    Browser --> Web
+    Web -->|Session and CSRF-protected requests| Django
+    Django --> DB
+    Django --> Media
+```
+
+Django serves the storefront files and provides the session-authenticated API. The browser uses the same backend origin by default; if the frontend is hosted separately, configure its origin in both CORS and CSRF settings.
 
 ## Project Structure
 
@@ -338,6 +362,20 @@ python manage.py test apps.api apps.products apps.accounts apps.cart apps.orders
 
 The tests use the database configured in Django settings. Ensure your PostgreSQL test database permissions are set up correctly.
 
+## Deployment
+
+There is no hosting-specific deployment manifest in this repository. Before publishing:
+
+1. Provision PostgreSQL and configure `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, and `DB_PORT` in the backend environment.
+2. Set a strong `SECRET_KEY`, `DEBUG=False`, and explicit production `ALLOWED_HOSTS`. Configure HTTPS and secure session and CSRF cookies at the application or hosting layer.
+3. Deploy the Django application from `backend/` with a production WSGI server. Install and configure that server as part of the deployment environment; it is not included in the current `requirements.txt`.
+4. Run database migrations and `collectstatic`. Configure the host or a CDN to serve collected static files from `STATIC_ROOT`; Django's development server is not a production static-file server.
+5. Configure durable media storage and serving for uploaded product images. The local `backend/media/` directory is suitable for development, not ephemeral production filesystems.
+6. If the storefront is served from a different origin, set the frontend API origin and add that exact HTTPS origin to both `CORS_ALLOWED_ORIGINS` and `CSRF_TRUSTED_ORIGINS`.
+7. Verify account/session behavior, catalog images, checkout stock validation, order creation, and staff access after deployment.
+
+Do not commit production credentials or use `DEBUG=True` on a public deployment.
+
 ## Development Notes
 
 - The frontend is static HTML, CSS, and JavaScript; Django supplies data through the session-authenticated `/api/v1/` endpoints.
@@ -349,3 +387,7 @@ The tests use the database configured in Django settings. Ensure your PostgreSQL
 - Apply checked-in database migrations with `migrate`. `makemigrations` is for creating migration files after model changes, not for initializing a database.
 - Product images and other uploaded files are stored under `backend/media/` during local development and served at `/media/`. Configure suitable protected media storage and serving for production.
 - Screenshots in the README are design/system references. Storefront products and customer data are managed through the database and backend.
+
+---
+
+Built by [@shoaibsikder](https://shoaibsikderportfolio.vercel.app) as a straightforward shopping experience for customers and a practical toolkit for store teams.
